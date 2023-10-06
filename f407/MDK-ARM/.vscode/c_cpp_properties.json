@@ -3,17 +3,19 @@
         {
             "name": "usart",
             "includePath": [
-                "c:\\stm32cubemx\\匿名上位机\\Inc",
-                "c:\\stm32cubemx\\匿名上位机\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
-                "c:\\stm32cubemx\\匿名上位机\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
-                "c:\\stm32cubemx\\匿名上位机\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
-                "c:\\stm32cubemx\\匿名上位机\\Drivers\\CMSIS\\Include",
-                "c:\\stm32cubemx\\匿名上位机\\lib",
+                "c:\\git_code\\匿名上位机_git\\upper_computer\\f407\\Inc",
+                "c:\\git_code\\匿名上位机_git\\upper_computer\\f407\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
+                "c:\\git_code\\匿名上位机_git\\upper_computer\\f407\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
+                "c:\\git_code\\匿名上位机_git\\upper_computer\\f407\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
+                "c:\\git_code\\匿名上位机_git\\upper_computer\\f407\\Drivers\\CMSIS\\Include",
+                "c:\\git_code\\匿名上位机_git\\upper_computer\\f407\\lib",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include",
+                "C:\\Keil_v5\\ARM\\ARMCC\\include\\arm_linux",
+                "C:\\Keil_v5\\ARM\\ARMCC\\include\\arm_linux_compat",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
-                "c:\\stm32cubemx\\匿名上位机\\MDK-ARM",
-                "c:\\stm32cubemx\\匿名上位机\\Src",
-                "c:\\stm32cubemx\\匿名上位机\\Drivers\\STM32F4xx_HAL_Driver\\Src"
+                "c:\\git_code\\匿名上位机_git\\upper_computer\\f407\\MDK-ARM",
+                "c:\\git_code\\匿名上位机_git\\upper_computer\\f407\\Src",
+                "c:\\git_code\\匿名上位机_git\\upper_computer\\f407\\Drivers\\STM32F4xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

@@ -61,52 +61,6 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-void USART1_IRQHandler(void)  
-{
-//    volatile uint8_t receive;
-    //receive interrupt 接收中断
-    if(huart1.Instance->SR & UART_FLAG_RXNE)
-    {
-			static int i1 = 0;//i1用来记录存在rx_buf哪个位置了
-			if(i1 < 50)
-			{
-        rxbuf[i1] = huart1.Instance->DR;
-				i1++;
-				HAL_UART_Transmit(&huart1, "ok\r\n", 4, 100);
-			}
-			else
-				i1 = 0;
-    }
-    //idle interrupt 空闲中断
-//    else if(huart1.Instance->SR & UART_FLAG_IDLE)
-//    {
-//        receive = huart1.Instance->DR;
-// //       HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_RESET);
-//    }
-
-}
-
-void USART6_IRQHandler(void)  
-{
-
-    volatile uint8_t receive;
-    //receive interrupt 接收中断
-    if(huart6.Instance->SR & UART_FLAG_RXNE)
-    {
-        receive = huart6.Instance->DR;
-        HAL_GPIO_TogglePin(LED_G_GPIO_Port, LED_G_Pin);
-
-    }
-    //idle interrupt 空闲中断
-    else if(huart6.Instance->SR & UART_FLAG_IDLE)
-    {
-        receive = huart6.Instance->DR;
-        HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_RESET);
-    }
-
-
-}
-
 
 
 /* USER CODE END 0 */

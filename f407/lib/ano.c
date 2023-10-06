@@ -1,3 +1,21 @@
+/**
+  ****************************(C) COPYRIGHT ZhouCc****************************
+  * @file       can_receive.c/h
+  * @brief      This is the program used by the anonymous host computer on the STM32F4
+  *             这是匿名上位机在stm32f4上的使用程序
+  * @note       如果发现上位机接收不到数，请多摁几下reset
+  * @history
+  *  Version    Date            Author          Modification
+  *  V1.0       2023.4.30       ZhouCc          完成
+  *  V1.5		2023.10.6		ZhouCc			增加对keil AC6编译器的兼容及对cpp的兼容
+  @verbatim
+  ==============================================================================
+
+  ==============================================================================
+  @endverbatim
+  ****************************(C) COPYRIGHT ZhouCc****************************
+  */
+
 #include "main.h"
 #include "ano.h"
 #include "usart.h"
@@ -9,10 +27,10 @@
 
 /******小端模式，低字节在前***/
 /*********数据拆分************/
-#define BYTE0(dwTemp)       (*(char *)(&dwTemp))	 
-#define BYTE1(dwTemp)       (*((char *)(&dwTemp) + 1))	 
-#define BYTE2(dwTemp)       (*((char *)(&dwTemp) + 2))
-#define BYTE3(dwTemp)       (*((char *)(&dwTemp) + 3))
+#define BYTE0(dwTemp)       (uint8_t)(dwTemp & 0xFF) 	 
+#define BYTE1(dwTemp)       (uint8_t)((dwTemp & 0xFF00)>>8)	 
+#define BYTE2(dwTemp)       (uint8_t)((dwTemp & 0xFF0000)>>16)
+#define BYTE3(dwTemp)       (uint8_t)((dwTemp & 0xFF0000)>>24)
 
 uint8_t BUFF[100];//存储数据
 
