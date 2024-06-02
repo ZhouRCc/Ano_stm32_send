@@ -8,6 +8,7 @@
   *  Version    Date            Author          Modification
   *  V1.0       2023.4.30       ZhouCc          完成
   *  V1.5		2023.10.6		ZhouCc			增加对keil AC6编译器的兼容及对cpp的兼容
+  *  V1.6		2024.6.2 		ZhouCc			增加对不同硬件的支持
   @verbatim
   ==============================================================================
 
@@ -21,8 +22,8 @@
 #include "usart.h"
 #include "bsp_delay.h"
 #include <stdarg.h>
-//此宏定义，使用串口1时将此处改为1，使用串口6时改为6
-#define WHICH_UART 1
+//请在此处将串口改为你所使用的串口
+UART_HandleTypeDef* dev_ano = &huart1;
 
 
 /******小端模式，低字节在前***/
@@ -44,10 +45,9 @@ void Ano_Init(void)
 	delay_init();
 	//enable receive interrupt and idle interrupt
 	//使能接收中断和空闲中断
-	__HAL_UART_ENABLE_IT(&huart1, UART_IT_RXNE);  //receive interrupt
-	__HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);  //idle interrupt
-	__HAL_UART_ENABLE_IT(&huart6, UART_IT_RXNE);  //receive interrupt
-	__HAL_UART_ENABLE_IT(&huart6, UART_IT_IDLE);  //idle interrupt
+	__HAL_UART_ENABLE_IT(dev_ano, UART_IT_RXNE);  //receive interrupt
+	__HAL_UART_ENABLE_IT(dev_ano, UART_IT_IDLE);  //idle interrupt
+
 }
 
 /**
@@ -91,14 +91,7 @@ void Ano_Send(uint8_t len, ...)
 	}
 	BUFF[_cnt++]=sumcheck;	
 	BUFF[_cnt++]=addcheck;	
-#if WHICH_UART == 1
-	
-	HAL_UART_Transmit(&huart1,BUFF,_cnt,0xFFF);
-#elif WHICH_UART == 6
-	HAL_UART_Transmit(&huart6,BUFF,_cnt,0xFFF);
-#else
-	#error WHICH_UART must be define 1 or 6
-#endif
+	HAL_UART_Transmit(dev_ano,BUFF,_cnt,0xFF);
 }
 
 
